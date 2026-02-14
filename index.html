@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nuestro Futuro 💍</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+
+<style>
+body {
+  margin: 0;
+  padding: 0;
+  background: #FFF5F7;
+  font-family: 'Montserrat', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  text-align: center;
+  overflow: hidden;
+}
+
+.container {
+  background: white;
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  max-width: 650px;
+  position: relative;
+}
+
+h1 {
+  font-family: 'Great Vibes', cursive;
+  font-size: 55px;
+  color: #F4A6B8;
+}
+
+#message {
+  font-size: 20px;
+  color: #5C5C5C;
+  min-height: 140px;
+  margin: 20px 0;
+  transition: opacity 0.4s ease;
+}
+
+button {
+  background: linear-gradient(180deg, #ffd3df, #F4A6B8);
+  border: none;
+  border-radius: 50%;
+  width: 90px;
+  height: 90px;
+  font-size: 35px;
+  cursor: pointer;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+button:active {
+  transform: scale(0.95);
+}
+
+#proposal {
+  display: none;
+  margin-top: 25px;
+  animation: fadeIn 1.2s ease forwards;
+}
+
+.proposal-btn {
+  border-radius: 12px;
+  padding: 12px 25px;
+  margin: 10px;
+  font-size: 18px;
+  cursor: pointer;
+  background: #F4A6B8;
+  color: white;
+  border: none;
+}
+
+.heart {
+  position: absolute;
+  font-size: 20px;
+  animation: float 1.5s ease-out forwards;
+}
+
+@keyframes float {
+  0% { opacity: 1; transform: translateY(0); }
+  100% { opacity: 0; transform: translateY(-150px); }
+}
+
+@keyframes fadeIn {
+  from {opacity:0;}
+  to {opacity:1;}
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+  <h1>Nuestro Futuro 💍</h1>
+  <div id="message">Presiona el corazón 💗</div>
+  <button onclick="showMessage()">💗</button>
+
+  <div id="proposal">
+    <h2 style="color:#F4A6B8; font-size:38px;">
+      ¿Te quieres casar conmigo? 💍
+    </h2>
+    <button class="proposal-btn" onclick="acceptLove()">Sí, quiero 💖</button>
+  </div>
+
+  <!-- Música romántica instrumental -->
+  <iframe id="musicFrame" width="0" height="0"
+  src="https://www.youtube.com/embed/2Vv-BfVoq4g?enablejsapi=1"
+  frameborder="0"
+  allow="autoplay"
+  allowfullscreen></iframe>
+</div>
+
+<script>
+
+let messages = [
+"Desde que llegaste a mi vida, empecé a imaginar un futuro donde despertamos juntos cada mañana.",
+"Me gusta pensar en una casa pequeña, con risas tuyas llenando cada rincón.",
+"Contigo aprendí que el amor no es solo sentir, es también elegir todos los días.",
+"Quiero caminar contigo cuando tengamos días fáciles y cuando tengamos días difíciles.",
+"Me imagino tomando tu mano mientras construimos sueños que antes parecían imposibles.",
+"Si algún día hablamos de promesas, quiero que la mía sea quedarme contigo.",
+"Tu sonrisa me hace pensar en un mañana lleno de esperanza.",
+"Quiero ser tu apoyo cuando el mundo pese demasiado.",
+"Imagino nuestras conversaciones antes de dormir hablando de planes y metas.",
+"Me veo abrazándote después de un día largo, sabiendo que somos equipo.",
+"Quiero crecer contigo, madurar contigo, aprender contigo.",
+"Si el amor es paciencia, quiero practicarla a tu lado.",
+"Si el amor es compromiso, quiero que el mío sea contigo.",
+"Me imagino celebrando aniversarios y recordando cómo empezó todo.",
+"Quiero que nuestros sueños se mezclen hasta volverse uno solo.",
+"Si algún día hay lágrimas, quiero ser quien las seque.",
+"Si algún día hay miedo, quiero ser quien te abrace fuerte.",
+"Imagino viajes, fotos y recuerdos que duren toda la vida.",
+"Quiero construir un hogar donde reine el respeto y la ternura.",
+"Me veo apoyando tus metas como si fueran mías.",
+"Quiero que el futuro no dé miedo porque estamos juntos.",
+"Imagino risas en la cocina y abrazos sin razón.",
+"Quiero que cada problema sea algo que enfrentemos como equipo.",
+"Me veo celebrando tus logros con orgullo.",
+"Quiero escribir nuestra historia sin saltarme ningún capítulo.",
+"Imagino promesas susurradas bajo el cielo nocturno.",
+"Quiero elegirte incluso en los días imperfectos.",
+"Me veo tomándote de la mano en momentos importantes.",
+"Quiero que nuestra historia tenga paciencia y cariño.",
+"Imagino compartir silencios cómodos contigo.",
+"Quiero que el amor que sentimos crezca con los años.",
+"Me imagino diciendo tu nombre con orgullo frente al mundo.",
+"Quiero ser quien te recuerde lo valiosa que eres.",
+"Imagino un futuro donde el respeto sea nuestra base.",
+"Quiero cuidar tu corazón como el tesoro más grande.",
+"Me veo caminando contigo hacia metas grandes.",
+"Quiero que nuestro amor sea constante y sincero.",
+"Imagino celebraciones pequeñas llenas de significado.",
+"Quiero compartir contigo mis sueños más profundos.",
+"Me veo apoyándote cuando el camino se vuelva difícil.",
+"Quiero que nuestras diferencias nos hagan más fuertes.",
+"Imagino un futuro lleno de paz a tu lado.",
+"Quiero que cada día juntos sea una elección consciente.",
+"Me veo protegiendo tu sonrisa siempre.",
+"Quiero que el tiempo fortalezca lo que sentimos.",
+"Imagino abrazos que curen cualquier preocupación.",
+"Quiero ser tu compañero en cada etapa de la vida.",
+"Me veo agradeciendo siempre haberte conocido.",
+"Quiero construir recuerdos que algún día contemos con orgullo.",
+"Imagino promesas cumplidas y sueños alcanzados juntos.",
+"Quiero un futuro donde el amor sea nuestro idioma.",
+"Y si el destino nos puso en el mismo camino..."
+];
+
+let index = 0;
+let musicStarted = false;
+
+function showMessage() {
+
+  if(index < messages.length){
+    const messageBox = document.getElementById("message");
+    messageBox.style.opacity = 0;
+
+    setTimeout(() => {
+      messageBox.textContent = messages[index];
+      messageBox.style.opacity = 1;
+      index++;
+    }, 300);
+
+    createHeart();
+
+    if (!musicStarted) {
+      const iframe = document.getElementById("musicFrame");
+      iframe.src += "&autoplay=1";
+      musicStarted = true;
+    }
+
+  } else {
+    document.getElementById("proposal").style.display = "block";
+  }
+}
+
+function createHeart() {
+  const heart = document.createElement("div");
+  heart.classList.add("heart");
+  heart.innerHTML = "💖";
+  heart.style.left = Math.random() * 90 + "%";
+  heart.style.bottom = "0px";
+  document.querySelector(".container").appendChild(heart);
+
+  setTimeout(() => {
+    heart.remove();
+  }, 1500);
+}
+
+function acceptLove() {
+  document.getElementById("proposal").innerHTML =
+  "<h2 style='color:#F4A6B8; font-size:42px;'>Entonces… 💍</h2>" +
+  "<h1 style='color:#F4A6B8;'>¿Comenzamos a escribir nuestro para siempre juntos? 💖</h1>";
+}
+
+</script>
+
+</body>
+</html>
